@@ -1,0 +1,27 @@
+<div class="content">
+    <div class="header">
+        <h2 class="title">Payever Calendar</h2>
+    </div>
+
+    <div class="body">
+        <div class="calendar-container">
+            <div class="calendar-header">
+                <div class="fab-button-container">
+                    <button mat-fab color="primary" (click)="openDialog()">
+                      <mat-icon>add</mat-icon>
+                    </button>
+                  </div>
+                  <h3>{{selected | date: 'mediumDate'}}</h3>
+            </div>
+            <mat-card class="demo-inline-calendar-card">
+                <mat-calendar [(selected)]="selected" (selectedChange)="onDateSelected(selected)"></mat-calendar>
+              </mat-card>
+              
+        </div>
+        <div class="detail-container">
+              <div *ngIf="eventList.length" cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+                <div *ngFor="let ev of eventList" class="example-box" cdkDrag>{{ev.name}} - {{ ev.date | date: 'mediumDate' }} <mat-icon (click)="delete(ev)">delete</mat-icon> </div>
+            </div>
+        </div>
+    </div>
+</div>

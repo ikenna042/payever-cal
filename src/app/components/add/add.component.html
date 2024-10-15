@@ -1,0 +1,12 @@
+<h2 mat-dialog-title>Event</h2>
+<mat-dialog-content>
+  <p>What event do you have for {{ data.date | date }}?</p>
+  <mat-form-field class="form">
+    <mat-label>Event Name</mat-label>
+    <input matInput [(ngModel)]="data.name">
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions class="btns">
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-flat-button [mat-dialog-close]="data.name" cdkFocusInitial color="primary" [disabled]="data.name == undefined || data.name == '' ">Add</button>
+</mat-dialog-actions>
